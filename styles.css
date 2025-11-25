@@ -10,16 +10,16 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+    background: #1a1a1a;
     padding: 20px;
 }
 
 .coffee-machine {
-    background-color: #3a3a3a;
+    background-color: #2d2d2d;
     border-radius: 15px;
     padding: 30px;
     width: 100%;
-    max-width: 600px;
+    max-width: 1000px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 }
 
@@ -54,6 +54,234 @@ body {
     margin-bottom: 25px;
     font-size: 1.8rem;
     text-align: center;
+}
+
+.screen-title {
+    color: #7dd3f0;
+    font-size: 2.2rem;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #7dd3f0;
+}
+
+.beverage-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    margin-bottom: 20px;
+}
+
+.beverage-btn {
+    background-color: transparent;
+    border: 1px solid #4a7a8a;
+    border-radius: 0;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 140px;
+    transition: all 0.2s ease;
+}
+
+.beverage-btn:hover:not(:disabled) {
+    background-color: rgba(125, 211, 240, 0.1);
+    transform: none;
+    box-shadow: none;
+}
+
+.beverage-btn.selected {
+    background-color: rgba(125, 211, 240, 0.2);
+    border-color: #7dd3f0;
+    box-shadow: inset 0 0 20px rgba(125, 211, 240, 0.3);
+}
+
+.beverage-icon {
+    font-size: 3rem;
+    filter: brightness(0) saturate(100%) invert(79%) sepia(18%) saturate(1234%) hue-rotate(157deg) brightness(95%) contrast(93%);
+}
+
+.beverage-label {
+    color: #7dd3f0;
+    font-size: 0.95rem;
+    text-align: center;
+    font-weight: 300;
+    line-height: 1.2;
+}
+
+.selected-beverage {
+    color: #7dd3f0;
+    font-size: 1.3rem;
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+.size-options {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    margin-bottom: 60px;
+    padding: 40px 0;
+}
+
+.size-btn {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    transition: all 0.2s ease;
+}
+
+.size-btn:hover:not(:disabled) {
+    background-color: rgba(125, 211, 240, 0.1);
+    transform: scale(1.05);
+}
+
+.size-btn.selected {
+    background-color: rgba(125, 211, 240, 0.15);
+}
+
+.cup-icon {
+    font-size: 8rem;
+    filter: brightness(0) saturate(100%) invert(79%) sepia(18%) saturate(1234%) hue-rotate(157deg) brightness(95%) contrast(93%);
+}
+
+.medium-cup {
+    font-size: 6rem;
+}
+
+.large-cup {
+    font-size: 9rem;
+}
+
+.size-label {
+    color: #7dd3f0;
+    font-size: 1.8rem;
+    text-align: center;
+    font-weight: 300;
+}
+
+.blend-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    margin-bottom: 60px;
+    padding: 40px 0;
+}
+
+.coffee-preview {
+    font-size: 15rem;
+    filter: brightness(0) saturate(100%) invert(79%) sepia(18%) saturate(1234%) hue-rotate(157deg) brightness(95%) contrast(93%);
+}
+
+.blend-options {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.blend-btn {
+    background-color: transparent;
+    border: 1px solid #4a7a8a;
+    border-radius: 8px;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    min-width: 280px;
+    transition: all 0.2s ease;
+}
+
+.blend-btn:hover:not(:disabled) {
+    background-color: rgba(125, 211, 240, 0.1);
+    border-color: #7dd3f0;
+    transform: translateX(5px);
+}
+
+.blend-btn.selected {
+    background-color: rgba(125, 211, 240, 0.2);
+    border-color: #7dd3f0;
+    box-shadow: 0 0 20px rgba(125, 211, 240, 0.3);
+}
+
+.blend-icon {
+    font-size: 2.5rem;
+    filter: brightness(0) saturate(100%) invert(79%) sepia(18%) saturate(1234%) hue-rotate(157deg) brightness(95%) contrast(93%);
+}
+
+.blend-label {
+    color: #7dd3f0;
+    font-size: 1.3rem;
+    font-weight: 300;
+}
+
+.confirmation-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 0;
+    margin-bottom: 40px;
+}
+
+.coffee-preview-large {
+    font-size: 18rem;
+    filter: brightness(0) saturate(100%) invert(79%) sepia(18%) saturate(1234%) hue-rotate(157deg) brightness(95%) contrast(93%);
+}
+
+.confirm-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+}
+
+.back-btn-confirm {
+    background-color: transparent;
+    color: #7dd3f0;
+    border: 2px solid #7dd3f0;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    text-transform: lowercase;
+    border-radius: 8px;
+}
+
+.back-btn-confirm:hover:not(:disabled) {
+    background-color: rgba(125, 211, 240, 0.2);
+}
+
+.confirm-btn-round {
+    background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+    color: white;
+    border: 3px solid #2d7a2f;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    font-size: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+}
+
+.confirm-btn-round:hover:not(:disabled) {
+    transform: scale(1.1);
+    box-shadow: 0 6px 25px rgba(76, 175, 80, 0.6);
+}
+
+.confirm-btn-round:active:not(:disabled) {
+    transform: scale(1.05);
 }
 
 .start-description {
@@ -128,9 +356,17 @@ button:disabled {
 }
 
 .back-btn {
-    background-color: #f44336;
+    background-color: transparent;
+    color: #7dd3f0;
+    border: 2px solid #7dd3f0;
     flex: 1;
     max-width: 150px;
+    font-size: 1.1rem;
+    text-transform: lowercase;
+}
+
+.back-btn:hover:not(:disabled) {
+    background-color: rgba(125, 211, 240, 0.2);
 }
 
 .next-btn {

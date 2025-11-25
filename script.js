@@ -2,9 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // DOM Elements
     const timerDisplay = document.getElementById('timer');
     const stepIndicator = document.getElementById('step-indicator');
-    const drinkButtons = document.querySelectorAll('.drink-btn');
+    const drinkButtons = document.querySelectorAll('.beverage-btn');
     const sizeButtons = document.querySelectorAll('.size-btn');
-    const roastButtons = document.querySelectorAll('.roast-btn');
+    const roastButtons = document.querySelectorAll('.blend-btn');
     const coffeeMachine = document.querySelector('.coffee-machine');
     const resultSection = document.getElementById('result');
     const newOrderBtn = document.getElementById('new-order');
@@ -111,11 +111,21 @@ document.addEventListener('DOMContentLoaded', () => {
         stepIndicator.textContent = `Step ${screenNum} of 4`;
         currentScreen = screenNum;
         
+        // If going to screen 2, show selected beverage
+        if (screenNum === 2 && selectedDrink) {
+            document.getElementById('selected-beverage-display').textContent = capitalizeFirst(selectedDrink);
+        }
+        
+        // If going to screen 3, show selected drink and size
+        if (screenNum === 3 && selectedDrink && selectedSize) {
+            document.getElementById('selected-order-display').textContent = 
+                `${capitalizeFirst(selectedSize)} · ${capitalizeFirst(selectedDrink)}`;
+        }
+        
         // If going to screen 4, populate confirmation
-        if (screenNum === 4) {
-            document.getElementById('confirm-drink').textContent = capitalizeFirst(selectedDrink);
-            document.getElementById('confirm-size').textContent = capitalizeFirst(selectedSize);
-            document.getElementById('confirm-roast').textContent = capitalizeFirst(selectedRoast);
+        if (screenNum === 4 && selectedDrink && selectedSize && selectedRoast) {
+            document.getElementById('final-order-display').textContent = 
+                `${capitalizeFirst(selectedSize)} · ${capitalizeFirst(selectedDrink)} · ${capitalizeFirst(selectedRoast)}`;
         }
     }
     

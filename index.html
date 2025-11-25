@@ -24,52 +24,122 @@
         
         <!-- Screen 1: Drink Type -->
         <div id="screen-1" class="screen hidden">
-            <h2>Select Your Drink</h2>
-            <div class="buttons large-buttons">
-                <button class="drink-btn" data-drink="espresso">Espresso</button>
-                <button class="drink-btn" data-drink="latte">Latte</button>
-                <button class="drink-btn" data-drink="cappuccino">Cappuccino</button>
-                <button class="drink-btn" data-drink="americano">Americano</button>
-                <button class="drink-btn" data-drink="macchiato">Macchiato</button>
-                <button class="drink-btn" data-drink="flat-white">Flat White</button>
+            <h2 class="screen-title">Select your Beverage</h2>
+            <div class="beverage-grid">
+                <button class="beverage-btn" data-drink="espresso">
+                    <div class="beverage-icon">☕</div>
+                    <div class="beverage-label">Espresso</div>
+                </button>
+                <button class="beverage-btn" data-drink="double-espresso">
+                    <div class="beverage-icon">☕</div>
+                    <div class="beverage-label">Double Espresso</div>
+                </button>
+                <button class="beverage-btn" data-drink="espresso-macchiato">
+                    <div class="beverage-icon">☕</div>
+                    <div class="beverage-label">Espresso Macchiato</div>
+                </button>
+                <button class="beverage-btn" data-drink="americano">
+                    <div class="beverage-icon">☕</div>
+                    <div class="beverage-label">Americano</div>
+                </button>
+                <button class="beverage-btn" data-drink="cappuccino">
+                    <div class="beverage-icon">☕</div>
+                    <div class="beverage-label">Cappuccino</div>
+                </button>
+                <button class="beverage-btn" data-drink="caffe-latte">
+                    <div class="beverage-icon">🥛</div>
+                    <div class="beverage-label">Caffè Latte</div>
+                </button>
+                <button class="beverage-btn" data-drink="flat-white">
+                    <div class="beverage-icon">☕</div>
+                    <div class="beverage-label">Flat White</div>
+                </button>
+                <button class="beverage-btn" data-drink="white-americano">
+                    <div class="beverage-icon">☕</div>
+                    <div class="beverage-label">White Americano</div>
+                </button>
+                <button class="beverage-btn" data-drink="mocha">
+                    <div class="beverage-icon">🥛</div>
+                    <div class="beverage-label">Mocha</div>
+                </button>
+                <button class="beverage-btn" data-drink="hot-chocolate">
+                    <div class="beverage-icon">🥛</div>
+                    <div class="beverage-label">Hot Chocolate</div>
+                </button>
+                <button class="beverage-btn" data-drink="hot-water">
+                    <div class="beverage-icon">☕</div>
+                    <div class="beverage-label">Hot Water</div>
+                </button>
+                <button class="beverage-btn" data-drink="cold-milk-shot">
+                    <div class="beverage-icon">🥛</div>
+                    <div class="beverage-label">Cold Milk Shot</div>
+                </button>
+                <button class="beverage-btn" data-drink="hot-milk">
+                    <div class="beverage-icon">🥛</div>
+                    <div class="beverage-label">Hot Milk</div>
+                </button>
+                <button class="beverage-btn" data-drink="hot-milk-shot">
+                    <div class="beverage-icon">🥛</div>
+                    <div class="beverage-label">Hot Milk Shot</div>
+                </button>
+                <button class="beverage-btn" data-drink="hot-water-shot">
+                    <div class="beverage-icon">☕</div>
+                    <div class="beverage-label">Hot Water Shot</div>
+                </button>
             </div>
         </div>
         
         <!-- Screen 2: Size -->
         <div id="screen-2" class="screen hidden">
-            <h2>Select Size</h2>
-            <div class="buttons large-buttons">
-                <button class="size-btn" data-size="medium">Medium</button>
-                <button class="size-btn" data-size="large">Large</button>
+            <h2 class="screen-title">Select your Cup Size</h2>
+            <p class="selected-beverage" id="selected-beverage-display"></p>
+            <div class="size-options">
+                <button class="size-btn" data-size="medium">
+                    <div class="cup-icon medium-cup">🥛</div>
+                    <div class="size-label">Medium</div>
+                </button>
+                <button class="size-btn" data-size="large">
+                    <div class="cup-icon large-cup">🥛</div>
+                    <div class="size-label">Large</div>
+                </button>
             </div>
             <div class="actions">
-                <button id="back-2" class="back-btn">Back</button>
+                <button id="back-2" class="back-btn">← back</button>
             </div>
         </div>
         
         <!-- Screen 3: Roast Type -->
         <div id="screen-3" class="screen hidden">
-            <h2>Select Roast Type</h2>
-            <div class="buttons large-buttons">
-                <button class="roast-btn" data-roast="blend">Blend</button>
-                <button class="roast-btn" data-roast="decaf">Decaf</button>
+            <h2 class="screen-title">Choose your Blend</h2>
+            <p class="selected-beverage" id="selected-order-display"></p>
+            <div class="blend-container">
+                <div class="coffee-preview">☕</div>
+                <div class="blend-options">
+                    <button class="blend-btn" data-roast="blend">
+                        <div class="blend-icon">🫘</div>
+                        <div class="blend-label">Espresso Blend</div>
+                    </button>
+                    <button class="blend-btn" data-roast="decaf">
+                        <div class="blend-icon">☕</div>
+                        <div class="blend-label">Decaf</div>
+                    </button>
+                </div>
             </div>
             <div class="actions">
-                <button id="back-3" class="back-btn">Back</button>
+                <button id="back-3" class="back-btn">← back</button>
             </div>
         </div>
         
         <!-- Screen 4: Confirmation -->
         <div id="screen-4" class="screen hidden">
-            <h2>Confirm Your Order</h2>
-            <div class="confirmation">
-                <p><strong>Drink:</strong> <span id="confirm-drink"></span></p>
-                <p><strong>Size:</strong> <span id="confirm-size"></span></p>
-                <p><strong>Roast:</strong> <span id="confirm-roast"></span></p>
+            <h2 class="screen-title">Your Beverage</h2>
+            <p class="selected-beverage" id="final-order-display"></p>
+            <div class="confirmation-container">
+                <div class="coffee-preview-large">☕</div>
             </div>
-            <div class="actions">
-                <button id="back-4" class="back-btn">Back</button>
-                <button id="confirm-btn" class="confirm-btn">Brew Coffee!</button>
+            <div class="confirm-actions">
+                <button id="back-4" class="back-btn-confirm">← back</button>
+                <button id="confirm-btn" class="confirm-btn-round">✓</button>
             </div>
         </div>
     </div>
