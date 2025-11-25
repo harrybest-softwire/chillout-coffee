@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let selectedSize = null;
     let selectedRoast = null;
     let startTime = 0;
+    let finalTime = 0;
     let timerInterval = null;
     let gameStarted = false;
     
@@ -129,6 +130,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function completeOrder() {
+        // Store the final time before stopping the timer
+        finalTime = Date.now() - startTime;
+        
         if (timerInterval) {
             clearInterval(timerInterval);
         }
@@ -151,6 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
         selectedSize = null;
         selectedRoast = null;
         startTime = 0;
+        finalTime = 0;
         gameStarted = false;
         
         // Clear selections
@@ -184,9 +189,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function shareOrder() {
-        // Calculate total time in seconds
-        const elapsed = Date.now() - startTime;
-        const totalSeconds = elapsed / 1000;
+        // Use the stored final time
+        const totalSeconds = finalTime / 1000;
         const formattedTime = totalSeconds.toFixed(2);
         
         // Create the share message
