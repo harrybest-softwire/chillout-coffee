@@ -317,7 +317,24 @@ document.addEventListener('DOMContentLoaded', () => {
             orderDescription = drink;
         }
         
-        const shareText = `I ordered a ${orderDescription} in ${formattedTime}s at ${websiteUrl}`;
+        // Get emojis for the order
+        const roastEmoji = selectedRoast === 'decaf' ? '😴' : (selectedRoast === 'N/A' ? '' : '⚡');
+        
+        // Drinks that don't contain coffee
+        const drinksWithoutCoffee = ['hot-chocolate', 'hot-water', 'hot-milk', 'hot-milk-shot', 'cold-milk-shot', 'hot-water-shot'];
+        const drinkEmoji = drinksWithoutCoffee.includes(selectedDrink) ? '' : '☕';
+        
+        // Drinks that contain milk
+        const drinksWithMilk = ['latte', 'cappuccino', 'flat-white', 'espresso-macchiato', 'hot-chocolate', 'hot-milk', 'hot-milk-shot', 'cold-milk-shot'];
+        const milkEmoji = drinksWithMilk.includes(selectedDrink) ? ':brother-may-i-have-some-oats:' : '';
+        
+        // Build emoji line
+        let emojiLine = '';
+        if (roastEmoji) emojiLine += roastEmoji + ' ';
+        if (drinkEmoji) emojiLine += (emojiLine ? drinkEmoji : drinkEmoji);
+        if (milkEmoji) emojiLine += (emojiLine ? ' ' + milkEmoji : milkEmoji);
+        
+        const shareText = `I ordered a ${orderDescription} in ${formattedTime}s\n${emojiLine}.\n\nTry beat my time at ${websiteUrl}`;
         
         // Copy to clipboard
         navigator.clipboard.writeText(shareText).then(() => {
