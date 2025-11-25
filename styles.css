@@ -1,0 +1,269 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+    padding: 20px;
+}
+
+.coffee-machine {
+    background-color: #3a3a3a;
+    border-radius: 15px;
+    padding: 30px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.display {
+    background-color: #1a1a1a;
+    color: #4caf50;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    border: 2px solid #4caf50;
+}
+
+#timer {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#step-indicator {
+    font-size: 1rem;
+    color: #fff;
+}
+
+.screen {
+    animation: fadeIn 0.3s ease-in;
+}
+
+.screen h2 {
+    color: #fff;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.start-description {
+    color: #fff;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.start-game-btn {
+    background-color: #4caf50;
+    padding: 20px 60px;
+    font-size: 1.3rem;
+    width: 100%;
+    max-width: 300px;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.large-buttons button {
+    padding: 15px 25px;
+    font-size: 1.1rem;
+    min-width: 120px;
+}
+
+button {
+    background-color: #5d5d5d;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+button:hover:not(:disabled) {
+    background-color: #4a4a4a;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+button:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.drink-btn.selected,
+.size-btn.selected,
+.roast-btn.selected {
+    background-color: #8d6e63;
+    box-shadow: 0 0 15px rgba(141, 110, 99, 0.6);
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.back-btn {
+    background-color: #f44336;
+    flex: 1;
+    max-width: 150px;
+}
+
+.next-btn {
+    background-color: #2196f3;
+    flex: 1;
+    max-width: 150px;
+}
+
+.confirm-btn {
+    background-color: #4caf50;
+    flex: 1;
+    max-width: 200px;
+    padding: 15px;
+    font-size: 1.1rem;
+}
+
+.confirmation {
+    background-color: #2a2a2a;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    border-left: 4px solid #8d6e63;
+}
+
+.confirmation p {
+    color: #fff;
+    font-size: 1.2rem;
+    margin: 12px 0;
+}
+
+.confirmation strong {
+    color: #8d6e63;
+}
+
+.hidden {
+    display: none;
+}
+
+#result {
+    background-color: #3a3a3a;
+    color: white;
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.result-content h2 {
+    color: #4caf50;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+.result-details {
+    background-color: #2a2a2a;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    border: 2px solid #4caf50;
+}
+
+.result-details p {
+    margin: 12px 0;
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.result-details strong {
+    color: #8d6e63;
+}
+
+.time-result {
+    font-size: 1.5rem !important;
+    color: #4caf50 !important;
+    margin-top: 20px !important;
+}
+
+.result-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.share-btn {
+    background-color: #ff9800;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    flex: 1;
+}
+
+.share-btn:hover:not(:disabled) {
+    background-color: #f57c00;
+}
+
+.new-order-btn {
+    background-color: #2196f3;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    flex: 1;
+}
+
+.share-message {
+    color: #4caf50;
+    font-size: 1rem;
+    margin-top: 15px;
+    animation: fadeInOut 2s ease-in-out;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
