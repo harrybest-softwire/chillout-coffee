@@ -199,8 +199,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function completeOrder() {
-        // Store the final time before stopping the timer
+        // Update timer one last time and store the final time
         finalTime = Date.now() - startTime;
+        updateTimer(); // Update display to match finalTime
         
         if (timerInterval) {
             clearInterval(timerInterval);
@@ -286,7 +287,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function shareOrder() {
         // Use the stored final time
         const totalSeconds = finalTime / 1000;
-        const formattedTime = totalSeconds.toFixed(2);
+        const formattedTime = totalSeconds.toFixed(3);
         
         // Create the share message
         const drink = capitalizeFirst(selectedDrink);
