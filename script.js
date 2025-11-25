@@ -77,7 +77,14 @@ document.addEventListener('DOMContentLoaded', () => {
             goToScreen(4);
         });
     });
-    back3.addEventListener('click', () => goToScreen(2));
+    back3.addEventListener('click', () => {
+        // Go back to size selection or drink selection based on drink type
+        if (drinksWithoutSize.includes(selectedDrink)) {
+            goToScreen(1); // Go back to drink selection
+        } else {
+            goToScreen(2); // Go back to size selection
+        }
+    });
     
     // Event Listeners - Screen 4
     back4.addEventListener('click', () => {
