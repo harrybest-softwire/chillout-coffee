@@ -25,9 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let timerInterval = null;
     let gameStarted = false;
     
-    // Start button
-    const startGameBtn = document.getElementById('start-game-btn');
-    startGameBtn.addEventListener('click', startGame);
+    // Start screen - click anywhere to start
+    const startScreen = document.getElementById('screen-start');
+    startScreen.addEventListener('click', startGame);
     
     // Drinks that don't need blend selection
     const drinksWithoutBlend = ['hot-chocolate', 'hot-water', 'cold-milk-shot', 'hot-milk', 'hot-milk-shot', 'hot-water-shot'];
