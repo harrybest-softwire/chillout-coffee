@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const drinksWithoutBlend = ['hot-chocolate', 'hot-water', 'cold-milk-shot', 'hot-milk', 'hot-milk-shot', 'hot-water-shot'];
     
     // Drinks that don't need size selection (shots and espressos)
-    const drinksWithoutSize = ['cold-milk-shot', 'hot-milk-shot', 'hot-water-shot', 'espresso', 'double-espresso'];
+    const drinksWithoutSize = ['cold-milk-shot', 'hot-milk-shot', 'hot-water-shot', 'espresso', 'double-espresso', 'espresso-macchiato'];
     
     // Event Listeners - Screen 1
     drinkButtons.forEach(btn => {
