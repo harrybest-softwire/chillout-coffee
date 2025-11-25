@@ -29,11 +29,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const startGameBtn = document.getElementById('start-game-btn');
     startGameBtn.addEventListener('click', startGame);
     
+    // Drinks that don't need blend selection
+    const drinksWithoutBlend = ['hot-chocolate', 'hot-water', 'cold-milk-shot', 'hot-milk', 'hot-milk-shot', 'hot-water-shot'];
+    
+    // Drinks that don't need size selection (shots and espressos)
+    const drinksWithoutSize = ['cold-milk-shot', 'hot-milk-shot', 'hot-water-shot', 'espresso', 'double-espresso'];
+    
     // Event Listeners - Screen 1
     drinkButtons.forEach(btn => {
         btn.addEventListener('click', () => {
             selectDrink(btn);
-            goToScreen(2);
+            // Skip size selection for certain drinks
+            if (drinksWithoutSize.includes(btn.dataset.drink)) {
+                selectedSize = 'N/A'; // Set default value
+                // Check if also needs to skip blend
+                if (drinksWithoutBlend.includes(btn.dataset.drink)) {
+                    selectedRoast = 'N/A';
+                    goToScreen(4); // Go directly to confirmation
+                } else {
+                    goToScreen(3); // Go to blend selection
+                }
+            } else {
+                goToScreen(2); // Go to size selection
+            }
         });
     });
     
@@ -41,7 +59,13 @@ document.addEventListener('DOMContentLoaded', () => {
     sizeButtons.forEach(btn => {
         btn.addEventListener('click', () => {
             selectSize(btn);
-            goToScreen(3);
+            // Skip blend selection for certain drinks
+            if (drinksWithoutBlend.includes(selectedDrink)) {
+                selectedRoast = 'N/A'; // Set default value
+                goToScreen(4); // Go directly to confirmation
+            } else {
+                goToScreen(3);
+            }
         });
     });
     back2.addEventListener('click', () => goToScreen(1));
@@ -56,7 +80,21 @@ document.addEventListener('DOMContentLoaded', () => {
     back3.addEventListener('click', () => goToScreen(2));
     
     // Event Listeners - Screen 4
-    back4.addEventListener('click', () => goToScreen(3));
+    back4.addEventListener('click', () => {
+        // Determine where to go back based on drink type
+        if (drinksWithoutSize.includes(selectedDrink)) {
+            // If drink doesn't have size, go back to blend or drink selection
+            if (drinksWithoutBlend.includes(selectedDrink)) {
+                goToScreen(1); // Go back to drink selection
+            } else {
+                goToScreen(3); // Go back to blend selection
+            }
+        } else if (drinksWithoutBlend.includes(selectedDrink)) {
+            goToScreen(2); // Go back to size selection
+        } else {
+            goToScreen(3); // Go back to blend selection
+        }
+    });
     confirmBtn.addEventListener('click', completeOrder);
     
     // New Order
@@ -123,9 +161,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         // If going to screen 4, populate confirmation
-        if (screenNum === 4 && selectedDrink && selectedSize && selectedRoast) {
-            document.getElementById('final-order-display').textContent = 
-                `${capitalizeFirst(selectedSize)} · ${capitalizeFirst(selectedDrink)} · ${capitalizeFirst(selectedRoast)}`;
+        if (screenNum === 4 && selectedDrink) {
+            let confirmText = '';
+            
+            // Add size if applicable
+            if (selectedSize !== 'N/A') {
+                confirmText = capitalizeFirst(selectedSize);
+            }
+            
+            // Add drink
+            if (confirmText) {
+                confirmText += ` · ${capitalizeFirst(selectedDrink)}`;
+            } else {
+                confirmText = capitalizeFirst(selectedDrink);
+            }
+            
+            // Add roast if applicable
+            if (selectedRoast && selectedRoast !== 'N/A') {
+                confirmText += ` · ${capitalizeFirst(selectedRoast)}`;
+            }
+            
+            document.getElementById('final-order-display').textContent = confirmText;
         }
     }
     
@@ -152,9 +208,32 @@ document.addEventListener('DOMContentLoaded', () => {
         resultSection.classList.remove('hidden');
         
         // Update result details
-        document.getElementById('result-drink').textContent = capitalizeFirst(selectedDrink);
-        document.getElementById('result-size').textContent = capitalizeFirst(selectedSize);
-        document.getElementById('result-roast').textContent = capitalizeFirst(selectedRoast);
+        const drink = capitalizeFirst(selectedDrink);
+        let orderText = '';
+        
+        // Add size if applicable
+        if (selectedSize !== 'N/A') {
+            orderText = capitalizeFirst(selectedSize);
+        }
+        
+        // Add roast if applicable
+        if (selectedRoast && selectedRoast !== 'N/A') {
+            const roast = capitalizeFirst(selectedRoast);
+            if (orderText) {
+                orderText += ` ${roast}`;
+            } else {
+                orderText = roast;
+            }
+        }
+        
+        // Add drink
+        if (orderText) {
+            orderText += ` ${drink}`;
+        } else {
+            orderText = drink;
+        }
+        
+        document.getElementById('result-order-text').textContent = orderText;
         document.getElementById('result-time').textContent = timerDisplay.textContent;
     }
     
@@ -195,7 +274,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function capitalizeFirst(str) {
-        return str.charAt(0).toUpperCase() + str.slice(1).replace('-', ' ');
+        return str.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
     }
     
     function shareOrder() {
@@ -205,11 +284,33 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Create the share message
         const drink = capitalizeFirst(selectedDrink);
-        const size = capitalizeFirst(selectedSize);
-        const roast = capitalizeFirst(selectedRoast);
         const websiteUrl = window.location.href;
         
-        const shareText = `I ordered a ${size} ${roast} ${drink} in ${formattedTime}s at ${websiteUrl}`;
+        let orderDescription = '';
+        
+        // Add size if applicable
+        if (selectedSize !== 'N/A') {
+            orderDescription = capitalizeFirst(selectedSize);
+        }
+        
+        // Add roast if applicable
+        if (selectedRoast && selectedRoast !== 'N/A') {
+            const roast = capitalizeFirst(selectedRoast);
+            if (orderDescription) {
+                orderDescription += ` ${roast}`;
+            } else {
+                orderDescription = roast;
+            }
+        }
+        
+        // Add drink
+        if (orderDescription) {
+            orderDescription += ` ${drink}`;
+        } else {
+            orderDescription = drink;
+        }
+        
+        const shareText = `I ordered a ${orderDescription} in ${formattedTime}s at ${websiteUrl}`;
         
         // Copy to clipboard
         navigator.clipboard.writeText(shareText).then(() => {
