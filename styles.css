@@ -39,6 +39,7 @@ body > .hidden {
     text-align: center;
     font-family: 'Courier New', monospace;
     border: 2px solid #4caf50;
+    display: none;
 }
 
 #timer {

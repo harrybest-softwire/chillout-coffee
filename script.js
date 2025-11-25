@@ -107,6 +107,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Functions
     function startGame() {
+        // Show the display
+        document.querySelector('.display').style.display = 'block';
+        
         // Start the timer
         startTime = Date.now();
         timerInterval = setInterval(updateTimer, 10);
@@ -260,6 +263,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         timerDisplay.textContent = '00:00.000';
         stepIndicator.textContent = 'Ready to Order';
+        
+        // Hide the display on start screen
+        document.querySelector('.display').style.display = 'none';
         
         // Show machine, hide result
         resultSection.classList.add('hidden');
